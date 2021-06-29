@@ -22,8 +22,6 @@ def en_xx(text,target_language):
 	return out.text
 
 languages = ('en_IN','hi_IN','mr_IN','tl_IN','ta_IN','gu_IN','bn_IN')
-filetypes = ('Excel', 'Excel With Multiple Sheet', 'CSV')
-
 
 def  process_csv(uploaded_file):
 	# Can be usd wherever a "file-like" object is accepted:
@@ -50,7 +48,7 @@ def process_xl(uploaded_file):
 
 # Add a selectbox to the sidebar:
 lang = st.selectbox(
-    'Select Language',
+    'Select Language (Comming soon) [ Not working , By default HINDI working]',
     languages
 )
 
