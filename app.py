@@ -20,15 +20,13 @@ def en_xx(text,target_language):
 	out = translate.translate(text=text,dest=target_language)
 	return out.text
 
-languagess = ('en_IN','hi_IN','mr_IN','tl_IN','ta_IN','gu_IN','bn_IN')
-filetypes = ('Excel', 'Excel With Multiple Sheet', 'CSV')
-
 
 def  process_csv(uploaded_file):
 	# Can be usd wherever a "file-like" object is accepted:
 	df = pd.read_csv(uploaded_file)
 	for column in df.columns:
-		df[column] = df[column].apply(lambda x : en_xx(x,'hi'))	
+		df[column] = df[column].apply(lambda x : en_xx(x,'hi'))
+	df.to_csv('csv_output.csv')	
 	st.write(df)
 	st.markdown(get_binary_file_downloader_html('csv_output.csv', 'Translated CSV FILE'), unsafe_allow_html=True)
 
