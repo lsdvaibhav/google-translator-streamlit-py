@@ -1,12 +1,11 @@
 import streamlit as st
 import pandas as pd
-from googletrans import Translator
+from googletrans import Translator , LANGUAGES
 from pandas import ExcelWriter
 import os
 import base64
 
 translate = Translator()
-
 
 @st.cache
 def get_binary_file_downloader_html(bin_file, file_label='File'):
@@ -21,7 +20,9 @@ def en_xx(text,target_language):
 	out = translate.translate(text=text,dest=target_language)
 	return out.text
 
-languages = ('en_IN','hi_IN','mr_IN','tl_IN','ta_IN','gu_IN','bn_IN')
+languagess = ('en_IN','hi_IN','mr_IN','tl_IN','ta_IN','gu_IN','bn_IN')
+filetypes = ('Excel', 'Excel With Multiple Sheet', 'CSV')
+
 
 def  process_csv(uploaded_file):
 	# Can be usd wherever a "file-like" object is accepted:
@@ -48,9 +49,15 @@ def process_xl(uploaded_file):
 
 # Add a selectbox to the sidebar:
 lang = st.selectbox(
-    'Select Language (Comming soon) [ Not working , By default HINDI working]',
-    languages
+    'Select Language',
+    list(LANGUAGES.values())
 )
+if lang!='':
+	lang = list(LANGUAGES.keys())[list(LANGUAGES.values()).index(lang)]
+
+en_sen = st.text_input('Enter the English sentence here:') 
+if en_sen!='':
+	st.write(en_xx(en_sen,lang))
 
 uploaded_file = st.file_uploader("Upload a CSV or Excel file (.csv or .xlsx)")
 if uploaded_file is not None:
