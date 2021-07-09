@@ -1,7 +1,7 @@
 
 # Bulk csv-excel G Translator using Streamlit
 
-A stream app for translation for single sentence and for bulk sentences in csv or eeexcel sheets using google-trans library in Python.
+A stream app for translation for single sentence and for bulk sentences in csv or excel sheets using google-trans library in Python.
 
 ## Installation
 
