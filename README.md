@@ -118,6 +118,9 @@ port = $PORT\n\
 ## Requirements text file
 requirements.txt file is available in this repo.
 
+## Sample app link
+[BW-translator](https://gt-en.herokuapp.com/) 
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
